@@ -61,7 +61,7 @@ export const counterSlice = createSlice({
         state.status = 'failed';
       });
   },
-});
+}); 
 
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 
