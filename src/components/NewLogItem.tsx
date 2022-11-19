@@ -30,7 +30,20 @@ const NewLogItem: React.FC = () => {
     const [nightLandings, setNightLandings] = useState<number>()
 
     const typeOptions = [
-        {value: 'C210', text: 'C210'}
+        {value: 'C210', text: 'C210'},
+        {value: 'C150', text: 'C150'},
+        {value: 'JABI', text: 'JABI'},
+        {value: 'P28A', text: 'P28A'},
+        {value: 'P38A', text: 'P38A'},
+        {value: 'C172', text: 'C172'},
+        {value: 'FNPT1', text: 'FNPT1'},
+        {value: 'P28R', text: 'P28R'},
+        {value: 'MF17', text: 'MF17'},
+        {value: 'C310', text: 'C310'},
+        {value: 'C425', text: 'C425'},
+        {value: 'F406', text: 'F406'},
+        {value: 'A321', text: 'A321'},
+        {value: 'A320', text: 'A320'},
     ]
 
     /**
@@ -64,49 +77,46 @@ const NewLogItem: React.FC = () => {
     }
 
     return (
-        <div className="w-3/4 rounded-md p-4" style={{
-            boxShadow: '0 0 5px 5px rgba(240, 240, 240, 1)',
-        }}>
-            <h2 className="text-2xl text-left">new flight log item</h2>
-            <form className="grid grid-cols-4 gap-4" onSubmit={submit}>
-                <section>
-                    <h4>flight</h4>
-                    <Input
-                        type="date"
-                        label="date"
-                        onChange={(e) => setDate(e.target.value)}
-                        value={date}
-                    />
-                    <Input
-                        type="text"
-                        label="type"
-                        onChange={(e) => setType(e.target.value)}
-                        value={type}
-                    />
-                    <Select options={typeOptions} onChange={(s) => setType(s)} value={type}/>
-                    <Input
-                        type="text"
-                        label="registration"
-                        onChange={(e) => setRegistration(e.target.value)}
-                        value={registration}
-                    />
-                    <Input
-                        type="text"
-                        label="day"
-                        name="day"
-                        onChange={(e) => setDay(e.target.value === 'Y')}
-                        value={day ? 'Y' : 'N'}
-                    />
-                    <Input
-                        type="text"
-                        label="details"
-                        onChange={(e) => setDetails(e.target.value)}
-                        value={details}
-                    />
-                </section>
-                <section>
-                    <h4>instrument</h4>
-
+            <div className="w-3/4 rounded-md p-4" style={{
+                boxShadow: '0 0 5px 5px rgba(240, 240, 240, 1)',
+            }}>
+                <h2 className="text-2xl text-left">new flight log item</h2>
+                <form className="grid grid-cols-4 gap-4" onSubmit={submit}>
+                    <section>
+                        <h4>flight</h4>
+                        <Input
+                            type="date"
+                            label="date"
+                            onChange={(e) => setDate(e.target.value)}
+                            value={date}
+                        />
+                        <Select options={typeOptions} onChange={(s) => setType(s)} value={type}/>
+                        <Input
+                            type="text"
+                            label="registration"
+                            onChange={(e) => setRegistration(e.target.value)}
+                            value={registration}
+                        />
+                        <Input
+                            type="text"
+                            label="day"
+                            name="day"
+                            onChange={(e) => setDay(e.target.value === 'Y')}
+                            value={day ? 'Y' : 'N'}
+                        />
+                        <Input
+                            type="text"
+                            label="details"
+                            onChange={(e) => setDetails(e.target.value)}
+                            value={details}
+                        />
+                    </section>
+                    <section>
+                        <h4>instrument</h4>
+                        <div>
+                            <input name="unio" type="radio" onChange={(e: React.ChangeEvent<HTMLInputElement>) => console.log(e.target.checked)}/>
+                            <input name="unio" type="radio" onChange={(e) => console.log(e.target.checked)}/>
+                    </div>
                     <Input
                         type="text"
                         label="nav aids"
