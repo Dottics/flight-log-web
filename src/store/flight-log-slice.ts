@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../app/store'
-import {useAppSelector} from "../app/hooks";
 
 export type FlightLog = {
     date: Date;

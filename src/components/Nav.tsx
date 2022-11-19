@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import {NavItem} from "./NavItem";
 
 const Nav: React.FC = () => {
@@ -14,7 +15,9 @@ const Nav: React.FC = () => {
                 <div>US</div>
             </NavItem>
             <NavItem>
-                <div>home</div>
+                <NavLink to="/dashboard">
+                    <div>dash</div>
+                </NavLink>
             </NavItem>
         </nav>
     )

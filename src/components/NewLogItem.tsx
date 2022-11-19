@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useAppDispatch } from '../app/hooks'
 import { Input } from './inputs/Input'
+import { Select } from './inputs/Select'
 import { add, FlightLog } from '../store/flight-log-slice'
 
 const NewLogItem: React.FC = () => {
@@ -27,6 +28,10 @@ const NewLogItem: React.FC = () => {
     const [remark, setRemark] = useState<string>()
     const [dayLandings, setDayLandings] = useState<number>()
     const [nightLandings, setNightLandings] = useState<number>()
+
+    const typeOptions = [
+        {value: 'C210', text: 'C210'}
+    ]
 
     /**
     * submit is the function to create a new flight log item
@@ -78,6 +83,7 @@ const NewLogItem: React.FC = () => {
                         onChange={(e) => setType(e.target.value)}
                         value={type}
                     />
+                    <Select options={typeOptions} onChange={(s) => setType(s)} value={type}/>
                     <Input
                         type="text"
                         label="registration"
