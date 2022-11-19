@@ -15,8 +15,8 @@ export type FlightLog = {
     instructorME: number;
     instructorFSTD: number;
     FSTD: number;
-    multiEngine: boolean;
-    day: boolean;
+    multiEngine: 'single' | 'multi';
+    day: 'day' | 'night';
     dual: number;
     PIC: number;
     PICUS: number;
@@ -39,8 +39,8 @@ export const dummyLog = ({ overrides = {} }: { overrides?: Partial<FlightLog> })
         instructorME: 0,
         instructorFSTD: 0,
         FSTD: 0,
-        multiEngine: true,
-        day: true,
+        multiEngine: 'single',
+        day: 'day',
         dual: 0,
         PIC: 1.1,
         PICUS: 0,

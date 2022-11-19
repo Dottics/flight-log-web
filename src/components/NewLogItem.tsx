@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useAppDispatch } from '../app/hooks'
 import { Input } from './inputs/Input'
 import { Select } from './inputs/Select'
+import { Radio } from './inputs/Radio'
 import { add, FlightLog } from '../store/flight-log-slice'
 
 const NewLogItem: React.FC = () => {
@@ -19,8 +20,8 @@ const NewLogItem: React.FC = () => {
     const [instructorME, setInstructorME] = useState<number>()
     const [instructorFSTD, setInstructorFSTD] = useState<number>()
     const [FSTD, setFSTD] = useState<number>()
-    const [multiEngine, setMultiEngine] = useState<boolean>()
-    const [day, setDay] = useState<boolean>()
+    const [multiEngine, setMultiEngine] = useState<'single' | 'multi'>('single')
+    const [day, setDay] = useState<'day' | 'night'>('day')
     const [dual, setDual] = useState<number>()
     const [PIC, setPIC] = useState<number>()
     const [PICUS, setPICUS] = useState<number>()
@@ -46,6 +47,16 @@ const NewLogItem: React.FC = () => {
         {value: 'A320', text: 'A320'},
     ]
 
+    const datNightOptions = [
+        { id: 'day', value: 'day', text: 'day' },
+        { id: 'night', value: 'night', text: 'night' },
+    ]
+
+    const multiEngineOptions = [
+        { id: 'single', value: 'single', text: 'single' },
+        { id: 'multi', value: 'multi', text: 'multi' },
+    ]
+
     /**
     * submit is the function to create a new flight log item
     */
@@ -65,8 +76,8 @@ const NewLogItem: React.FC = () => {
             instructorME: instructorME ?? 0,
             instructorFSTD: instructorFSTD ?? 0,
             FSTD: FSTD ?? 0,
-            multiEngine: multiEngine ?? false,
-            day: day ?? false,
+            multiEngine: multiEngine ?? 'single',
+            day: day ?? 'day',
             dual: dual ?? 0,
             PIC: PIC ?? 0,
             PICUS: PICUS ?? 0,
@@ -97,12 +108,11 @@ const NewLogItem: React.FC = () => {
                             onChange={(e) => setRegistration(e.target.value)}
                             value={registration}
                         />
-                        <Input
-                            type="text"
-                            label="day"
-                            name="day"
-                            onChange={(e) => setDay(e.target.value === 'Y')}
-                            value={day ? 'Y' : 'N'}
+                        <Radio
+                            name="dayNight"
+                            options={datNightOptions}
+                            value={day}
+                            onChange={(s) => setDay(s === 'day' ? 'day' : 'night')}
                         />
                         <Input
                             type="text"
@@ -113,10 +123,6 @@ const NewLogItem: React.FC = () => {
                     </section>
                     <section>
                         <h4>instrument</h4>
-                        <div>
-                            <input name="unio" type="radio" onChange={(e: React.ChangeEvent<HTMLInputElement>) => console.log(e.target.checked)}/>
-                            <input name="unio" type="radio" onChange={(e) => console.log(e.target.checked)}/>
-                    </div>
                     <Input
                         type="text"
                         label="nav aids"
@@ -148,12 +154,11 @@ const NewLogItem: React.FC = () => {
                 </section>
                 <section>
                     <h4>plane</h4>
-                    <Input
-                        type="text"
-                        label="multi-engine"
+                    <Radio
                         name="multiEngine"
-                        onChange={(e) => setMultiEngine(e.target.value === 'Y')}
-                        value={multiEngine ? 'Y' : 'N'}
+                        value={multiEngine}
+                        options={multiEngineOptions}
+                        onChange={(s) => setMultiEngine(s === 'single' ? 'single' : 'multi')}
                     />
                     <Input
                         type="number"

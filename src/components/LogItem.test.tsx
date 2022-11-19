@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { LogItem } from './LogItem'
 
 describe('LogItem', () => {
@@ -17,14 +17,18 @@ describe('LogItem', () => {
             instructorME: 0,
             instructorFSTD: 0,
             FSTD: 0,
-            multiEngine: true,
-            day: true,
+            multiEngine: 'multi',
+            day: 'day',
             dual: 0,
             PIC: 1.1,
             PICUS: 0,
             copilot: 3.5,
             remarks: 'Route Training & Conversion'
-        }} />)
-        expect(true).toBe(true)
+        }} />, {
+            wrapper: ({ children }) => (<table><tbody>{ children }</tbody></table>)
+        })
+
+        screen.getByText(/c210/i)
+        screen.getByText(/v5-waf/i)
     })
 })
