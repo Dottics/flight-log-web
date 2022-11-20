@@ -9,30 +9,24 @@ const Nav: React.FC = () => {
     const defaultNav = () => (
         <div>
             <NavItem>
-                <NavLink to="/">
-                    <div>home</div> 
-                </NavLink>
+                <NavLink to="/" className={({isActive}) => (isActive ? `text-sky-500`: '')}>home</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink to="/login">
-                    <div>login</div>
-                </NavLink>
+                <NavLink to="/sign-in" className={({isActive}) => (isActive ? `text-sky-500`: '')}>sign in</NavLink>
             </NavItem>
         </div>
     )
     const loggedInNav = () => (
         <div>
             <NavItem>
-                <NavLink to="/profile">
+                <NavLink to="/p/profile" className={({isActive}) => (isActive ? `text-sky-500`: '')}>
                     <div className="uppercase">{
                         `${user!.firstName.slice(0, 1)}${user!.lastName.slice(0, 1)}`
                     }</div>
                 </NavLink>
             </NavItem>
             <NavItem>
-                <NavLink to="/dashboard">
-                    <div>dash</div>
-                </NavLink>
+                <NavLink to="/p/dashboard" className={({isActive}) => (isActive ? `text-sky-500`: '')}>dash</NavLink>
             </NavItem>
         </div>
     )

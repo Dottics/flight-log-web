@@ -4,7 +4,7 @@ import { LogItem } from './LogItem'
 describe('LogItem', () => {
     it('hi', () =>  {
         render(<LogItem flightLog={{
-            date: new Date(),
+            date: new Date().toISOString(),
             type: 'C210',
             registration: 'V5-WAF',
             pilotInCommand: 'SELF',

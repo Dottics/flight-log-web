@@ -1,7 +1,7 @@
 import React from 'react'
 
 type InputProps = {
-    type: 'text' | 'date' | 'datetime-local' | 'number';
+    type: 'text' | 'date' | 'datetime-local' | 'number' | 'password' | 'email';
     label: string;
     name?: string;
     placeholder?: string;
@@ -26,6 +26,7 @@ const Input: React.FC<InputProps> = ({
                 { label }
             </label>
             <input
+                autoComplete="off"
                 className="border border-solid border-gray-300 rounded-md h-8 mt-6 px-4 py-1 w-full"
                 id={name}
                 name={name}

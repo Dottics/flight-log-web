@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../app/store'
 
 export type FlightLog = {
-    date: Date;
+    date: string;
     type: string;
     registration: string;
     pilotInCommand: string;
@@ -26,7 +26,7 @@ export type FlightLog = {
 
 export const dummyLog = ({ overrides = {} }: { overrides?: Partial<FlightLog> }): FlightLog => {
     const f: FlightLog = {
-        date: new Date(),
+        date: new Date().toISOString(),
         type: 'C210',
         registration: 'V5-WAF',
         pilotInCommand: 'SELF',
@@ -69,7 +69,7 @@ const flightLogSlice = createSlice({
     initialState,
     reducers: {
         add(state, action: PayloadAction<FlightLog>) {
-            state.flightLogs = state.flightLogs.concat(action.payload)
+            state.flightLogs.unshift(action.payload)
         }
     }
 })

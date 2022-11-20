@@ -13,19 +13,45 @@ export type UserState = {
 }
 
 const initialState: UserState = {
-    user: {
-        username: 'jb007',
-        firstName: 'james',
-        middleName: 'arthur',
-        lastName: 'bond'
-    },
+//    user: {
+//        username: 'jb007',
+//        firstName: 'james',
+//        middleName: 'arthur',
+//        lastName: 'bond'
+//    },
+    user: null,
 }
 
 export const userSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: {}
+    reducers: {
+        signOut: (state: UserState) => {
+            state.user = null
+        },
+        signIn: (state: UserState, action) => {
+            state.user = {
+                username: 'jb007',
+                firstName: 'james',
+                middleName: 'arthur',
+                lastName: 'bond'
+            }
+        },
+        signUp: (state: UserState, action) => {
+            state.user = {
+                username: 'jb007',
+                firstName: 'james',
+                middleName: 'arthur',
+                lastName: 'bond'
+            }
+        },
+        deleteAccount: (state: UserState) => {
+            state.user = null
+        }
+    }
 })
+
+export const { signOut, signIn, signUp, deleteAccount } = userSlice.actions;
 
 export const selectUser = (state: RootState): User | null => state.user.user;
 

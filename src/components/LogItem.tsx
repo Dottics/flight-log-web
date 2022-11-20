@@ -8,7 +8,7 @@ type LogItemProps = {
 const LogItem: React.FC<LogItemProps> = ({ flightLog }) => {
     return (
         <tr>
-            <td>{ flightLog.date.toISOString().slice(0, 10) }</td>
+            <td>{ flightLog.date.slice(0, 10) }</td>
             <td>{ flightLog.type }</td>
             <td>{ flightLog.registration }</td>
             <td>{ flightLog.pilotInCommand }</td>

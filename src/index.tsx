@@ -6,6 +6,8 @@ import { store } from './app/store';
 import App from './App';
 import { Home } from './views/Home'
 import { Dashboard } from './views/Dashboard'
+import { ProfileView } from './views/ProfileView'
+import { SignInView } from './views/SignInView'
 //import reportWebVitals from './reportWebVitals';
 import './index.css';
 
@@ -18,8 +20,13 @@ root.render(
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<App />}>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="" element={<Home />} />
+                    <Route path="sign-in" element={<SignInView />} />
+                </Route>
+                {/* protected routes */}
+                <Route path="/p" element={<App />}>
+                    <Route path="profile" element={<ProfileView />} />
+                    <Route path="dashboard" element={<Dashboard />} />
                 </Route>
             </Routes>
         </BrowserRouter>

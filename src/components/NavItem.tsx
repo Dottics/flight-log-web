@@ -8,12 +8,7 @@ type NavItemProps = {
 */
 const NavItem: React.FC<NavItemProps> = ({ children }) => {
     return (
-        <div style={{
-            height: '4rem',
-            width: '4rem',
-            display: 'grid',
-            alignItems: 'center'
-        }}>
+        <div className="h-16 w-16 grid items-center">
             { children }
         </div>
     )

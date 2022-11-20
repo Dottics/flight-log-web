@@ -63,7 +63,7 @@ const NewLogItem: React.FC = () => {
     const submit = (e: React.FormEvent) => {
         e.preventDefault()
         const newFlightLog: FlightLog = {
-            date: new Date(date),
+            date: new Date(date).toISOString(),
             type: type ?? '',
             registration: registration ?? '',
             pilotInCommand: pilotInCommand ?? '',
