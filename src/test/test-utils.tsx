@@ -7,9 +7,9 @@ import { setupStore } from '../app/store';
 
 const renderWithProviders = (
     ui: ReactElement,
-    options?: Omit<RenderOptions, 'wrapper'>
+    options?: Omit<RenderOptions, 'wrapper'> & { preloadedState: any }
 ) => {
-    const preloadedState = {};
+    const preloadedState = options?.preloadedState ?? {};
     const store = setupStore({ preloadedState })
 
     const Wrapper: FC<{children: React.ReactNode}> = ({ children }) => {

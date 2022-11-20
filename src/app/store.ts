@@ -18,6 +18,7 @@ type SetupStoreProps = {
 
 export const setupStore = (options: SetupStoreProps): ToolkitStore => {
   return configureStore({
+    preloadedState: options.preloadedState,
     reducer: {
       counter: counterReducer,
       user: userReducer,
