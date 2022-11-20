@@ -2,8 +2,8 @@ import React from 'react'
 
 const Home: React.FC = () => {
     return (
-        <div>
-            <p>home</p>
+        <div className="grid h-screen items-center">
+            <h1 className="text-6xl pb-12">flight log</h1>
         </div>
     )
 }
