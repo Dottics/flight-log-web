@@ -4,6 +4,9 @@ import { useAppSelector, useAppDispatch } from '../app/hooks'
 import { selectUser, signOut, deleteAccount } from '../store/user-slice'
 
 import { Profile } from '../components/Profile'
+import { Card } from '../components/common/Card'
+import { Button } from '../components/common/Button'
+import { Input } from '../components/inputs/Input'
 
 const ProfileView: React.FC = () => {
     const dispatch = useAppDispatch()
@@ -22,24 +25,31 @@ const ProfileView: React.FC = () => {
     }
 
     return (
-        <div className="profile-view ml-24">
-            <div className="p-4">
+        <div className="profile-view ml-24 flex">
+            <div className="p-4 min-w-max">
                 <Profile user={user!} />
             </div>
-            <div className="p-4">
-                <h3>Security</h3>
-                <button
-                    className="rounded-md border border-solid border-gray-300 hover:border-blue-500 w-full mt-6 h-8 uppercase italic"
-                    onClick={signOutUser}
-                >
-                    sign out
-                </button>
-                <button
-                    className="rounded-md border border-solid border-gray-300 hover:border-blue-500 w-full mt-6 h-8 uppercase italic"
-                    onClick={deleteUserAccount}
-                >
-                    delete account
-                </button>
+            <div className="grid items-center grow">
+                <div className="w-1/4 ml-24 flex flex-col gap-8 my-6">
+                    <Card>
+                        <h3 className="text-2xl">edit profile</h3>
+                        <Input type="text" label="username" value="" />
+                        <Input type="text" label="first name" name="firstName" value="" />
+                        <Input type="text" label="last name" name="lastName" value="" />
+                        <Button>
+                            update
+                        </Button>
+                    </Card>
+                    <Card>
+                        <h3 className="text-2xl">security</h3>
+                        <Button onClick={signOutUser}>
+                            sign out
+                        </Button>
+                        <Button onClick={deleteUserAccount}>
+                            delete account
+                        </Button>
+                    </Card>
+                </div>
             </div>
         </div>
     )

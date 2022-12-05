@@ -4,7 +4,7 @@ import { selectUser } from '../store/user-slice'
 
 import { LogList } from '../components/LogList'
 import { Profile } from '../components/Profile'
-import { NewLogItem } from '../components/NewLogItem'
+import { DashboardTabs } from '../components/DashboardTabs'
 
 const Dashboard: React.FC = () => {
     const user = useAppSelector(selectUser);
@@ -12,7 +12,7 @@ const Dashboard: React.FC = () => {
         <div className="dashboard ml-24">
             <div className="flex gap-8 p-4">
                 { user ? <Profile user={user} /> : null }
-                <NewLogItem />
+                <DashboardTabs />
             </div>
             <div className="grid gap-4 p-4">
                 <div className="rounded-md p-4" style={{

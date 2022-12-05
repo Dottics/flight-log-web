@@ -5,7 +5,11 @@ import { Select } from './inputs/Select'
 import { Radio } from './inputs/Radio'
 import { add, FlightLog } from '../store/flight-log-slice'
 
-const NewLogItem: React.FC = () => {
+type NewLogItemProps = {
+    className?: string;
+}
+
+const NewLogItem: React.FC<NewLogItemProps> = ({ className = '' }) => {
     const dispatch = useAppDispatch()
     const [date, setDate] = useState<string>(new Date().toISOString().slice(0, 10))
     const [type, setType] = useState<string>()
@@ -88,7 +92,7 @@ const NewLogItem: React.FC = () => {
     }
 
     return (
-            <div className="w-3/4 rounded-md p-4" style={{
+            <div className={`rounded-md p-4 ${className}`} style={{
                 boxShadow: '0 0 5px 5px rgba(240, 240, 240, 1)',
             }}>
                 <h2 className="text-2xl text-left">new flight log item</h2>
